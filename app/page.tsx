@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Turnstile from "react-turnstile";
 
 export default function Home() {
   const [topic, setTopic] = useState("");
@@ -8,6 +9,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
   const [history, setHistory] = useState<string[]>([]);
+  const [captchaToken, setCaptchaToken] = useState("");
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("history");
@@ -112,10 +114,20 @@ export default function Home() {
             <option>TikTok</option>
             <option>Instagram Reels</option>
           </select>
+          <div className="mb-4 flex justify-center">
+  <Turnstile
+    sitekey={
+      process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!
+    }
+    onVerify={(token) => {
+      setCaptchaToken(token);
+    }}
+  />
+</div>
 
           <button
             onClick={generateScript}
-            disabled={loading}
+            disabled={loading || !captchaToken}
             className="w-full bg-purple-600 hover:bg-purple-700 transition p-4 rounded-xl font-semibold"
           >
             {loading ? "Generating..." : "Generate Script"}
