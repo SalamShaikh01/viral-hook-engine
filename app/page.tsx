@@ -116,11 +116,13 @@ export default function Home() {
           </select>
           <div className="mb-4 flex justify-center">
   <Turnstile
-    sitekey={
-      process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!
-    }
+    sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ""}
     onVerify={(token) => {
+      console.log("Success", token);
       setCaptchaToken(token);
+    }}
+    onError={() => {
+      console.log("Turnstile Error");
     }}
   />
 </div>
