@@ -1,15 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [topic, setTopic] = useState("");
   const [platform, setPlatform] = useState("YouTube Shorts");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
+  const [history, setHistory] = useState<string[]>([]);
+
+  useEffect(() => {
+    const savedHistory = localStorage.getItem("history");
+
+    if (savedHistory) {
+      setHistory(JSON.parse(savedHistory));
+    }
+  }, []);
 
   const generateScript = async () => {
     try {
+      if (!topic.trim()) {
+        alert("Please enter a topic");
+        return;
+      }
+
       setLoading(true);
       setResult("");
 
@@ -26,7 +40,25 @@ export default function Home() {
 
       const data = await response.json();
 
+      if (data.error) {
+        setResult(data.error);
+        return;
+      }
+
       setResult(data.result);
+
+      const updatedHistory = [
+        data.result,
+        ...history,
+      ].slice(0, 5);
+
+      setHistory(updatedHistory);
+
+      localStorage.setItem(
+        "history",
+        JSON.stringify(updatedHistory)
+      );
+
     } catch (error) {
       setResult("Something went wrong.");
     } finally {
@@ -51,6 +83,7 @@ export default function Home() {
 
       <div className="max-w-3xl mx-auto">
 
+        {/* HERO */}
         <h1 className="text-5xl font-bold text-center mb-4 bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
           Viral Hook & Script Engine
         </h1>
@@ -59,6 +92,7 @@ export default function Home() {
           Generate viral hooks, captions, and short-form scripts instantly using AI.
         </p>
 
+        {/* GENERATOR CARD */}
         <div className="bg-zinc-900/80 backdrop-blur-lg p-6 rounded-3xl border border-zinc-800 shadow-2xl">
 
           <input
@@ -89,6 +123,7 @@ export default function Home() {
 
         </div>
 
+        {/* OUTPUT */}
         {result && (
           <div className="mt-8 bg-zinc-900/80 backdrop-blur-lg p-6 rounded-3xl border border-zinc-800 whitespace-pre-wrap shadow-2xl">
 
@@ -112,12 +147,47 @@ export default function Home() {
           </div>
         )}
 
+        {/* HISTORY */}
+        {history.length > 0 && (
+          <div className="mt-10">
+            <h2 className="text-2xl font-bold mb-4">
+              Recent Generations
+            </h2>
+
+            <div className="space-y-4">
+              {history.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-zinc-900 border border-zinc-800 p-4 rounded-2xl text-zinc-300 whitespace-pre-wrap"
+                >
+                  {item.substring(0, 300)}...
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* BOTTOM AD PLACEHOLDER */}
         <div className="mt-10 flex justify-center">
           <div className="w-[300px] h-[250px] bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center text-zinc-500">
             Square Ad
           </div>
         </div>
+
+        {/* FOOTER */}
+        <footer className="mt-16 text-center text-zinc-500 text-sm space-x-4">
+          <a href="/about" className="hover:text-white">
+            About
+          </a>
+
+          <a href="/privacy" className="hover:text-white">
+            Privacy
+          </a>
+
+          <a href="/terms" className="hover:text-white">
+            Terms
+          </a>
+        </footer>
 
       </div>
     </main>
