@@ -139,28 +139,68 @@ export default function Home() {
         </div>
 
         {/* OUTPUT */}
-        {result && (
-          <div className="mt-8 bg-zinc-900/80 backdrop-blur-lg p-6 rounded-3xl border border-zinc-800 whitespace-pre-wrap shadow-2xl">
+{result && (
+  <div className="mt-8 bg-zinc-900/80 backdrop-blur-lg p-6 rounded-3xl border border-zinc-800 whitespace-pre-wrap shadow-2xl">
 
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">
-                Generated Content
-              </h2>
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-xl font-bold">
+        Generated Content
+      </h2>
 
-              <button
-                onClick={copyToClipboard}
-                className="bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-xl text-sm"
-              >
-                Copy
-              </button>
-            </div>
+      <div className="flex gap-2">
+        <button
+          onClick={copyToClipboard}
+          className="bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-xl text-sm"
+        >
+          Copy
+        </button>
 
-            <div className="text-zinc-300 leading-8">
-              {result}
-            </div>
+        <button
+          onClick={() => {
+            if (navigator.share) {
+              navigator.share({
+                title: "Viral Hook & Script Engine",
+                text: result,
+                url: window.location.href,
+              });
+            } else {
+              navigator.clipboard.writeText(result);
+              alert("Content copied!");
+            }
+          }}
+          className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-xl text-sm"
+        >
+          Share
+        </button>
 
-          </div>
-        )}
+        <button
+          onClick={() => {
+            const blob = new Blob([result], {
+              type: "text/plain",
+            });
+
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "viral-script.txt";
+            a.click();
+
+            URL.revokeObjectURL(url);
+          }}
+          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl text-sm"
+        >
+          Download
+        </button>
+      </div>
+    </div>
+
+    <div className="text-zinc-300 leading-8">
+      {result}
+    </div>
+
+  </div>
+)}
 
         {/* HISTORY */}
         {history.length > 0 && (
