@@ -21,14 +21,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
   url: "https://viral-hook-engine-two.vercel.app/blog/viral-hooks-guide",
   lastModified: new Date(),
-},
-{
+  },
+
+  {
   url: "https://viral-hook-engine-two.vercel.app/blog/social-media-growth-tips",
   lastModified: new Date(),
-},
-{
+  },
+  {
   url: "https://viral-hook-engine-two.vercel.app/blog/content-strategy-2026",
   lastModified: new Date(),
-},
+  },
   ]
 }
