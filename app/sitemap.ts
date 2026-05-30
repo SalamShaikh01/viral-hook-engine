@@ -31,5 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   url: "https://viral-hook-engine-two.vercel.app/blog/content-strategy-2026",
   lastModified: new Date(),
   },
+  {
+  url: "https://viral-hook-engine-two.vercel.app/Contact",
+  lastModified: new Date(),
+  },
   ]
 }
