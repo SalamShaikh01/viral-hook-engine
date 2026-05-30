@@ -200,6 +200,40 @@ export default function Home() {
           <a href="/terms" className="hover:text-white">Terms</a>
           <a href="/Contact" className="hover:text-white">Contact Us</a>
         </footer>
+        <section className="mt-12">
+  <h2 className="text-2xl font-bold mb-4">
+    Creator Resources
+  </h2>
+
+  <ul className="space-y-3">
+    <li>
+      <a
+        href="/blog/viral-hooks-guide"
+        className="text-blue-400 underline"
+      >
+        Complete Guide to Viral Hooks
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/blog/social-media-growth-tips"
+        className="text-blue-400 underline"
+      >
+        Social Media Growth Tips
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/blog/content-strategy-2026"
+        className="text-blue-400 underline"
+      >
+        Content Strategy for Creators
+      </a>
+    </li>
+  </ul>
+</section>
 
       </div>
     </main>
