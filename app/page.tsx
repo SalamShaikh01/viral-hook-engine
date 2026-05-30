@@ -198,6 +198,7 @@ export default function Home() {
           <a href="/about" className="hover:text-white">About</a>
           <a href="/privacy" className="hover:text-white">Privacy</a>
           <a href="/terms" className="hover:text-white">Terms</a>
+          <a href="/Contact" className="hover:text-white">Contact Us</a>
         </footer>
 
       </div>
