@@ -25,7 +25,11 @@ export const metadata = {
     "YouTube Shorts AI",
     "TikTok script generator",
     "Instagram Reel captions",
-  ],
+    ],
+    verification: {
+    google: "DB3CUEMjTdF47kL_5wGECB3e57brdQrnW9sJqHirwlU",
+  },
+  
 
   openGraph: {
     title: "Viral Hook & Script Engine",

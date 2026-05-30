@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://viral-hook-engine-two.vercel.app/sitemap.xml
