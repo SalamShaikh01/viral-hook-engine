@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ViralHooksGuide() {
   return (
     <main className="min-h-screen bg-black text-white">
@@ -134,7 +136,7 @@ export default function ViralHooksGuide() {
         </div>
 
         {/* CTA */}
-        <section className="mt-16 bg-gradient-to-r from-purple-900/30 to-blue-900/30 border border-zinc-800 rounded-3xl p-8 text-center">
+        <section className="mt-16 bg-linear-to-r from-purple-900/30 to-blue-900/30 border border-zinc-800 rounded-3xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-3">
             Ready to Generate Viral Hooks?
           </h2>
@@ -144,12 +146,10 @@ export default function ViralHooksGuide() {
             YouTube Shorts, TikTok, and Instagram Reels.
           </p>
 
-          <a
-            href="/"
-            className="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-medium"
-          >
+          <Link href="/"
+            className="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-medium">
             Try Viral Hook Engine
-          </a>
+          </Link>
         </section>
 
       </article>

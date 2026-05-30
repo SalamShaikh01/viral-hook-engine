@@ -1,5 +1,7 @@
 // app/blog/content-strategy-2026/page.tsx
 
+import Link from "next/link";
+
 export default function ContentStrategy2026() {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-12">
@@ -112,7 +114,7 @@ export default function ContentStrategy2026() {
           your audience and refining your content over time.
         </p>
 
-        <div className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 border border-zinc-800 rounded-3xl p-8 text-center">
+        <div className="bg-linear-to-r from-purple-900/30 to-blue-900/30 border border-zinc-800 rounded-3xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-3">
             Ready to Create Better Content?
           </h2>
@@ -122,12 +124,12 @@ export default function ContentStrategy2026() {
             short-form scripts for your content.
           </p>
 
-          <a
+          <Link
             href="/"
             className="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-medium"
           >
             Back to Home
-          </a>
+          </Link>
         </div>
 
       </div>
