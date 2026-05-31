@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Turnstile from "react-turnstile";
 
@@ -67,7 +68,7 @@ export default function Home() {
       {/* TOP AD */}
       <div className="max-w-5xl mx-auto mb-8">
         <div className="h-[90px] bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center text-zinc-500">
-          Ad Banner
+         Featured Content
         </div>
       </div>
 
@@ -200,6 +201,7 @@ export default function Home() {
           <a href="/terms" className="hover:text-white">Terms</a>
           <a href="/Contact" className="hover:text-white">Contact Us</a>
         </footer>
+        
             <section className="mt-12">
       <h2 className="text-2xl font-bold mb-4">
         Creator Resources
@@ -207,30 +209,30 @@ export default function Home() {
 
       <ul className="space-y-3">
         <li>
-          <a
+          <Link
             href="/blog/viral-hooks-guide"
             className="text-blue-400 underline"
           >
             Complete Guide to Viral Hooks
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a
+          <Link
             href="/blog/social-media-growth-tips"
             className="text-blue-400 underline"
           >
             Social Media Growth Tips
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a
+          <Link
             href="/blog/content-strategy-2026"
             className="text-blue-400 underline"
           >
             Content Strategy for Creators
-          </a>
+          </Link>
         </li>
       </ul>
     </section>
